@@ -26,6 +26,7 @@ dependencies:
   animated_splash_screen: ^1.0.1
   splashscreen: ^1.2.0
   google_fonts: ^1.1.0
+  url_launcher: ^5.5.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -54,6 +55,9 @@ flutter:
      - images/student.gif
      - images/programming.gif
      - images/mobile_animation.gif
+     - images/books.gif
+     - images/classopen.gif
+     - images/checkbox.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
