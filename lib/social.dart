@@ -57,7 +57,9 @@ class _SocialState extends State<Social> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body:
+      SingleChildScrollView(child:
+        Column(
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(top: 50,bottom: 10),
@@ -71,16 +73,24 @@ class _SocialState extends State<Social> {
               about("Email: ishwamgarg19@gmail.com"),
               Container(
                 alignment: Alignment.center,
-                margin: EdgeInsets.only(top: 20,bottom: 10),
+                margin: EdgeInsets.only(bottom: 10),
                 child: Text("My social Media",style: GoogleFonts.pacifico(fontSize: 40,fontWeight: FontWeight.bold,color: Colors.blue),)
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Social("facebook","https://www.facebook.com/profile.php?id=100008333706851l",Colors.blue),
-                  Social("instagram","https://www.instagram.com/ishwamgarg/?hl=en",Colors.pink),
-                  Social("github","'https://github.com/Ishwam-Garg'",Colors.black),
+                  SizedBox(width: 10,),
                   Social("Blog", "https://www.thebtechian.com/", Colors.green),
+                  SizedBox(width: 10,),
+                  Social("instagram","https://www.instagram.com/ishwamgarg/?hl=en",Colors.pink),
+                ],
+              ),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Social("github","https://www.github.com/Ishwam-Garg",Colors.black),
                 ],
               ),
               Container(
@@ -89,6 +99,7 @@ class _SocialState extends State<Social> {
                 child: Text("Thank You and Stay Safe!",style: GoogleFonts.pacifico(color: Colors.green,fontSize: 30,fontWeight: FontWeight.bold)
               )
               ),],
+      ),
       ),
     );
   }

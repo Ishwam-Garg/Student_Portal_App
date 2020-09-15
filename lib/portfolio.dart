@@ -3,35 +3,34 @@ import 'package:google_fonts/google_fonts.dart';
 import 'social.dart';
 import 'Skills.dart';
 
-class Portfolio_start extends StatefulWidget {
+class Port extends StatefulWidget {
   @override
-  _Portfolio_startState createState() => _Portfolio_startState();
+  _PortState createState() => _PortState();
 }
 
-class _Portfolio_startState extends State<Portfolio_start> {
+class _PortState extends State<Port> {
+  static const routeName = '/next-page';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: "Portfolio",
-      home: Portfolio(),
+      debugShowCheckedModeBanner: false,
+      home: port_folio(),
     );
   }
 }
 
-
-
-class Portfolio extends StatefulWidget {
+class port_folio extends StatefulWidget {
   @override
-  _PortfolioState createState() => _PortfolioState();
+  _port_folioState createState() => _port_folioState();
 }
 
-class _PortfolioState extends State<Portfolio> {
+class _port_folioState extends State<port_folio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: PageView(
+      body: new PageView(
         children: <Widget>[
           info(),
           Container(

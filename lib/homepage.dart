@@ -5,6 +5,7 @@ import 'homedrawer.dart';
 import 'social.dart';
 import 'Skills.dart';
 import 'portfolio.dart';
+
 class DrawerSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -63,13 +64,6 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          info(),
-          Container(
-            child: Skills(),
-          ),
-          Container(
-            child: Social(),
-          )
         ],
         pageSnapping: true,
       ),
@@ -149,6 +143,7 @@ class _HomeState extends State<Home> {
             child: Text("Attendance",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
         ],),);
   }
+  //Portfolio Button Done
   Widget Portfolio(){
     return Container(
       padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
@@ -164,7 +159,9 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           Image.asset('images/student.gif',height: 100,fit: BoxFit.cover),
           RaisedButton(onPressed: (){
-            Portfolio_start();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Port()),
+            );
           },
             color: Colors.white,
             highlightColor: Colors.blue,

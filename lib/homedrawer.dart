@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'portfolio.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -30,35 +31,58 @@ class HomeDrawer extends StatelessWidget {
                 TextSpan(text: "Ishwam Garg\n", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.black87)),
                 TextSpan(text: "@ishwam", style: TextStyle(fontFamily: 'Montserrat', color: Colors.black54)),
               ]),),
+              Container(
+                alignment: Alignment.centerRight,
+                margin: EdgeInsets.only(left: 0,),
+                padding: EdgeInsets.only(top: 50,left: 0,bottom: 0),
+                child: Column(
+                  children: <Widget>[
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: RaisedButton(onPressed: (){
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context)=> Port()),
+                          );
+                        },
+                          color: Colors.blue,
+                          child: Text("View",style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            color: Colors.white,
+                          ),),
+                        )
+                    ),
+                  ],
+                ),
+              )
             ],),
-          ),
+          ), //View Button
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Anand Srivastava\n","@Anand","images/student.gif"),
+          colleague("Anand Srivastava\n","@Anand","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Apra Jain\n","@Apra","images/student.gif"),
+          colleague("Apra Jain\n","@Apra","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Avani Mittal\n","@Avani","images/student.gif"),
+          colleague("Avani Mittal\n","@Avani","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Harsh Gupta\n","@Harsh","images/student.gif"),
+          colleague("Harsh Gupta\n","@Harsh","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Piyush Shukla\n","@Piyush","images/student.gif"),
+          colleague("Piyush Shukla\n","@Piyush","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Manish\n","@Manish","images/student.gif"),
+          colleague("Manish\n","@Manish","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Snigdhha Tyagi\n","@Snigdhha","images/student.gif"),
+          colleague("Snigdhha Tyagi\n","@Snigdhha","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif",context),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
         ]
     )
     );
   }
 
-  Widget colleague(name,username,image){
+  Widget colleague(name,username,image,context){
     return Container(padding: EdgeInsets.only(top: 25, left: 8, right: 8, bottom: 25),
       color: Colors.white,
       //key: username,
@@ -80,7 +104,11 @@ class HomeDrawer extends StatelessWidget {
             children: <Widget>[
               ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
-                  child: RaisedButton(onPressed: (){Profile_gen(name,username,image);},
+                  child: RaisedButton(onPressed: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context)=>Profile_gen(name,username,image)),
+                      );
+                    },
                     color: Colors.blue,
                     child: Text("View",style: TextStyle(
                       fontFamily: 'Montserrat',
@@ -100,6 +128,34 @@ class HomeDrawer extends StatelessWidget {
   }
 
   Widget Profile_gen(name,username,image){
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 10,),
+            Container(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 30),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black,width: 8),
+                shape: BoxShape.circle,
+              ),
+              child: CircleAvatar(minRadius: 50,maxRadius: 100,backgroundImage: AssetImage(image),),
+            ),
+            SizedBox(height: 10,),
+            RichText(
+              text: TextSpan(children: [
+              TextSpan(text: name, style: GoogleFonts.pacifico(fontSize: 30,color: Colors.blue)),
+              TextSpan(text: username, style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black54)),
+            ]),),
+          ],
+        ),
+      ),
+    );
     //Generates a fake profile on pressing view
   }
 
