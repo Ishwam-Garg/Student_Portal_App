@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'homedrawer.dart';
 import 'social.dart';
 import 'Skills.dart';
+import 'portfolio.dart';
 class DrawerSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,17 +30,35 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           Container(color: Colors.blue,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: Text("DashBoard",style: GoogleFonts.pacifico(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Doubts(),
-                    Attendance(),
-                  ],
+                Container(
+                  color: Colors.white70,
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Doubts(),
+                          Attendance(),
+                        ],),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Search(),
+                          Portfolio(),
+                        ],),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10,bottom: 10),
+                  child: Text("Swipe right for Colleagues panel",style: GoogleFonts.pacifico(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
                 ),
               ],
             ),
@@ -56,7 +75,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
   Widget info(){
     return Container(
       color: Colors.white,child: Column(
@@ -88,6 +106,7 @@ class _HomeState extends State<Home> {
       ],
     ),);
   }
+  //To Set Onclick Properties
   Widget Doubts(){
     return Container(
       padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
@@ -128,6 +147,48 @@ class _HomeState extends State<Home> {
             color: Colors.white,
             highlightColor: Colors.blue,
             child: Text("Attendance",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
+        ],),);
+  }
+  Widget Portfolio(){
+    return Container(
+      padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
+      margin: EdgeInsets.only(top: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.black54,width: 5),
+        shape: BoxShape.rectangle,
+        color: Colors.white,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Image.asset('images/student.gif',height: 100,fit: BoxFit.cover),
+          RaisedButton(onPressed: (){
+            Portfolio_start();
+          },
+            color: Colors.white,
+            highlightColor: Colors.blue,
+            child: Text("Portfolio",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
+        ],),);
+  }
+  Widget Search(){
+    return Container(
+      padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
+      margin: EdgeInsets.only(top: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.black54,width: 5),
+        shape: BoxShape.rectangle,
+        color: Colors.white,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Image.asset('images/searching.gif',height: 100,fit: BoxFit.cover),
+          RaisedButton(onPressed: (){},
+            color: Colors.white,
+            highlightColor: Colors.blue,
+            child: Text("Search",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
         ],),);
   }
 }

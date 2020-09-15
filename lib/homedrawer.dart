@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -11,15 +12,11 @@ class HomeDrawer extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.only(top: 30,bottom: 30),
             color: Colors.blue,
-            child: Text("Colleagues",style: new TextStyle(
-                fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold,
+            child: Text("Colleagues",style: GoogleFonts.pacifico(
               fontSize: 40,
               color: Colors.white,
-              decoration: TextDecoration.underline,
               decorationThickness: 2,
-              decorationColor: Colors.white,
-            ),),
+              decorationColor: Colors.white,))
           ),
           Container(padding: EdgeInsets.only(top: 20, left: 8, right: 8, bottom: 8),
             color: Colors.white,
@@ -64,6 +61,7 @@ class HomeDrawer extends StatelessWidget {
   Widget colleague(name,username,image){
     return Container(padding: EdgeInsets.only(top: 25, left: 8, right: 8, bottom: 25),
       color: Colors.white,
+      //key: username,
       child:Row(children: <Widget>[
         ClipRRect(
           borderRadius: BorderRadius.circular(100.0),
@@ -87,7 +85,6 @@ class HomeDrawer extends StatelessWidget {
                     child: Text("View",style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Colors.white,
-                      decoration: TextDecoration.underline,
                     ),),
                   )
               ),
