@@ -6,7 +6,17 @@ class HomeDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(child: ListView(
         children: <Widget>[
-          Container(padding: EdgeInsets.only(top: 50, left: 8, right: 8, bottom: 8),
+          Container(
+            padding: EdgeInsets.only(top: 20, left: 25, right: 8, bottom: 8),
+            color: Colors.blue,
+            child: Text("Colleagues",style: new TextStyle(
+                fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+              color: Colors.white,
+            ),),
+          ),
+          Container(padding: EdgeInsets.only(top: 20, left: 8, right: 8, bottom: 8),
             color: Colors.white,
             child:Row(children: <Widget>[
               ClipRRect(
@@ -29,13 +39,25 @@ class HomeDrawer extends StatelessWidget {
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
           colleague("Snigdhha Tyagi\n","@Snigdhha","images/student.gif"),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
         ]
     )
     );
   }
 
   Widget colleague(name,username,image){
-    return Container(padding: EdgeInsets.only(top: 50, left: 8, right: 8, bottom: 8),
+    return Container(padding: EdgeInsets.only(top: 25, left: 8, right: 8, bottom: 25),
       color: Colors.white,
       child:Row(children: <Widget>[
         ClipRRect(
