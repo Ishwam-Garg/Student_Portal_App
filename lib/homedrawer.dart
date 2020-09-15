@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -7,13 +8,17 @@ class HomeDrawer extends StatelessWidget {
     return Drawer(child: ListView(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 20, left: 25, right: 8, bottom: 8),
+            alignment: Alignment.center,
+            padding: EdgeInsets.only(top: 30,bottom: 30),
             color: Colors.blue,
             child: Text("Colleagues",style: new TextStyle(
                 fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
               fontSize: 40,
               color: Colors.white,
+              decoration: TextDecoration.underline,
+              decorationThickness: 2,
+              decorationColor: Colors.white,
             ),),
           ),
           Container(padding: EdgeInsets.only(top: 20, left: 8, right: 8, bottom: 8),
@@ -21,7 +26,7 @@ class HomeDrawer extends StatelessWidget {
             child:Row(children: <Widget>[
               ClipRRect(
                 borderRadius: BorderRadius.circular(100.0),
-                child: Image.asset("images/car.gif", width: 80, height: 80, fit: BoxFit.fill,),
+                child: Image.asset("images/programming.gif", width: 80, height: 80, fit: BoxFit.fill,),
               ),
               SizedBox(width: 8,),
               RichText(text: TextSpan(children: [
@@ -31,21 +36,21 @@ class HomeDrawer extends StatelessWidget {
             ],),
           ),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          colleague("Anand Srivastava\n","@Anand","images/student.gif"),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
           colleague("Apra Jain\n","@Apra","images/student.gif"),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Avani Mittal\n","@Avani","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Harsh Gupta\n","@Harsh","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Piyush Shukla\n","@Piyush","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
           colleague("Manish\n","@Manish","images/student.gif"),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
+          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
+          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
           colleague("Snigdhha Tyagi\n","@Snigdhha","images/student.gif"),
-          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
-          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
-          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
-          Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
-          colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
           colleague("Mohit Kumar\n","@Mohit","images/student.gif"),
           Divider(height: 1, thickness: 1, color: Colors.blueGrey[900] ),
@@ -69,8 +74,36 @@ class HomeDrawer extends StatelessWidget {
           TextSpan(text: name, style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Montserrat', color: Colors.black87)),
           TextSpan(text: username, style: TextStyle(fontFamily: 'Montserrat', color: Colors.black54)),
         ]),),
+        Container(
+          alignment: Alignment.centerRight,
+          margin: EdgeInsets.only(left: 0,),
+          padding: EdgeInsets.only(top: 50,left: 0,bottom: 0),
+          child: Column(
+            children: <Widget>[
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: RaisedButton(onPressed: (){Profile_gen(name,username,image);},
+                    color: Colors.blue,
+                    child: Text("View",style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      color: Colors.white,
+                      decoration: TextDecoration.underline,
+                    ),),
+                  )
+              ),
+            ],
+          ),
+        )
       ],),
     );
+  }
+
+  Widget Search_Bar(){
+    //Implement search bar here
+  }
+
+  Widget Profile_gen(name,username,image){
+    //Generates a fake profile on pressing view
   }
 
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'homedrawer.dart';
-
 
 class DrawerSide extends StatelessWidget {
   @override
@@ -22,8 +22,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Page"),),
       drawer: HomeDrawer(),
+      body: PageView(
+        children: <Widget>[
+          //create pages here
+          Container(color: Colors.green,),
+          Container(color: Colors.blue),
+        ],
+        pageSnapping: true,
+      ),
     );
   }
 }
