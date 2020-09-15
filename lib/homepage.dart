@@ -25,9 +25,8 @@ class _HomeState extends State<Home> {
       drawer: HomeDrawer(),
       body: PageView(
         children: <Widget>[
-          //create pages here
-          Container(color: Colors.green,),
-          Container(color: Colors.blue),
+          Container(color: Colors.blue,),
+          Container(color: Colors.white),
         ],
         pageSnapping: true,
       ),
