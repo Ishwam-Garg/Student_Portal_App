@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:student_portal/homepage.dart';
 import 'login_page.dart';
 class register extends StatefulWidget {
   @override
@@ -112,6 +113,9 @@ class _registerState extends State<register> {
                 elevation: 7.0,
                 child: GestureDetector(
                   onTap: (){
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DrawerSide()),
+                    );
                   },//place login here
                   child: Center(
                     child: Text('Sign Up',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),),

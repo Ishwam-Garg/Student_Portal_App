@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: HomeDrawer(),
       body: PageView(
         children: <Widget>[
@@ -35,26 +36,32 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 30),
-                  child: Text("DashBoard",style: GoogleFonts.pacifico(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),),
+                  child: Text("DashBoard",style: GoogleFonts.bubblegumSans(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),),
                 ),
                 Container(
-                  color: Colors.white70,
-                  padding: EdgeInsets.only(bottom: 20),
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Doubts(),
-                          Attendance(),
-                        ],),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Search(),
-                          Portfolio(),
-                        ],),
-                    ],
+                  color: Colors.transparent,
+                  padding: EdgeInsets.only(bottom: 20,left: 5,right: 5),
+                  child: Material(
+                    color: Colors.white70,
+                    elevation: 20,
+                    shadowColor: Colors.black,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Doubts(),
+                            Attendance(),
+                          ],),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Search(),
+                            Portfolio(),
+                          ],),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
@@ -104,89 +111,124 @@ class _HomeState extends State<Home> {
   Widget Doubts(){
     return Container(
       padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
-      margin: EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black54,width: 5),
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-      ),
+      margin: EdgeInsets.only(top: 0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset('images/classopen.gif',height: 100,fit: BoxFit.cover),
-          RaisedButton(onPressed: (){},
+          Material(
             color: Colors.white,
-            highlightColor: Colors.blue,
-            child: Text("Doubts",style: GoogleFonts.pacifico(fontSize: 25,color: Colors.black),),)
+            borderRadius: BorderRadius.circular(20.0),
+            shadowColor: Colors.blueAccent,
+            elevation: 10.0,
+            child: GestureDetector(
+              onTap: (){},
+              child: Container(
+                height: 180,
+                width: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('images/classopen.gif',height: 100,fit: BoxFit.cover),
+                    Text('Doubts',style: GoogleFonts.pacifico(fontWeight: FontWeight.bold,fontSize: 20),),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
   Widget Attendance(){
     return Container(
-      padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
-      margin: EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black54,width: 5),
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-      ),
+      padding: EdgeInsets.only(top: 20,left: 5,right: 15,bottom: 15),
+      margin: EdgeInsets.only(top: 0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset('images/checkbox.gif',height: 100,fit: BoxFit.cover),
-          RaisedButton(onPressed: (){},
+          Material(
             color: Colors.white,
-            highlightColor: Colors.blue,
-            child: Text("Attendance",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
-        ],),);
+            borderRadius: BorderRadius.circular(20.0),
+            shadowColor: Colors.blueAccent,
+            elevation: 10.0,
+            child: GestureDetector(
+              onTap: (){},
+              child: Container(
+                height: 180,
+                width: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('images/checkbox.gif',height: 100,fit: BoxFit.cover),
+                    Text('Attendance',style: GoogleFonts.pacifico(fontWeight: FontWeight.bold,fontSize: 20),),
+                  ],),
+              ),
+            ),
+          ),
+        ],
+      ),
+      );
   }
   //Portfolio Button Done
   Widget Portfolio(){
     return Container(
-      padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
-      margin: EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black54,width: 5),
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-      ),
+      padding: EdgeInsets.only(top: 20,left: 5,right: 15,bottom: 25),
+      margin: EdgeInsets.only(top: 0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset('images/student.gif',height: 100,fit: BoxFit.cover),
-          RaisedButton(onPressed: (){
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Port()),
-            );
-          },
+          Material(
             color: Colors.white,
-            highlightColor: Colors.blue,
-            child: Text("Portfolio",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
-        ],),);
+            borderRadius: BorderRadius.circular(20.0),
+            shadowColor: Colors.blueAccent,
+            elevation: 10.0,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Port()),
+                );
+              },
+              child: Container(
+                height: 180,
+                width: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('images/student.gif',height: 100,fit: BoxFit.cover),
+                    Text('Portfolio',style: GoogleFonts.pacifico(fontWeight: FontWeight.bold,fontSize: 20),),
+                  ],),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
   Widget Search(){
     return Container(
-      padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 15),
-      margin: EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black54,width: 5),
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-      ),
+      padding: EdgeInsets.only(top: 20,left: 15,right: 15,bottom: 25),
+      margin: EdgeInsets.only(top: 0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Image.asset('images/searching.gif',height: 100,fit: BoxFit.cover),
-          RaisedButton(onPressed: (){},
+          Material(
             color: Colors.white,
-            highlightColor: Colors.blue,
-            child: Text("Search",style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black),),)
-        ],),);
+            borderRadius: BorderRadius.circular(20.0),
+            shadowColor: Colors.blueAccent,
+            elevation: 10.0,
+            child: GestureDetector(
+              onTap: (){},
+              child: Container(
+                height: 180,
+                width: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('images/searching.gif',height: 100,fit: BoxFit.cover),
+                    Text('Search',style: GoogleFonts.pacifico(fontWeight: FontWeight.bold,fontSize: 20),),
+                  ],),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
