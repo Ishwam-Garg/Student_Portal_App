@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'register_page.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -67,6 +68,7 @@ class _LoginState extends State<Login> {
                     alignment: Alignment.centerRight,
                     padding: EdgeInsets.only(left: 30,top: 15),
                     child: InkWell(
+                      onTap: (){},
                       child: Text('Forgot Password?',style: GoogleFonts.montserrat(
                           color: Colors.blue,fontWeight: FontWeight.bold,decoration: TextDecoration.underline),),
                     ),),
@@ -108,13 +110,34 @@ class _LoginState extends State<Login> {
                             Center(
                               child: ImageIcon(AssetImage('images/facebook.png')),
                             ),
-                            Text('Log in with Facebook',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                            Text('Log in with Facebook',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),],),
+                      ),),),
                   SizedBox(height: 5),
+                  SizedBox(height: 10,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.only(left: 20,top: 15),
+                        child: Text("New User?",style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
+                      ),
+                      SizedBox(width: 5,),
+                      Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.only(top: 15),
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => register()),
+                            );
+                          },
+                          child: Text('Register',style: GoogleFonts.montserrat(
+                              color: Colors.blue,fontWeight: FontWeight.bold,decoration: TextDecoration.underline),),
+                        ),),
+                    ],
+                  ),
                 ],
               ),
             ),
