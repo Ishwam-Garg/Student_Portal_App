@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:student_portal/homepage.dart';
 import 'login_page.dart';
 import 'package:email_validator/email_validator.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class register extends StatefulWidget {
   @override
