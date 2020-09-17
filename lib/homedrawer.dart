@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'portfolio.dart';
+import 'login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -37,19 +40,45 @@ class HomeDrawer extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: Column(
                   children: <Widget>[
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: RaisedButton(onPressed: (){
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=> Port()),
-                          );
-                        },
-                          color: Colors.blue,
-                          child: Text("View",style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            color: Colors.white,
-                          ),),
-                        )
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: RaisedButton(onPressed: (){
+                              Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=> Port()),);},
+                              color: Colors.blue,
+                              child: Text("View",style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                color: Colors.white,
+                              ),),)),
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: RaisedButton(onPressed: (){
+                                FirebaseAuth.instance.signOut();
+                                Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Login()),
+                                );
+                                Fluttertoast.showToast(
+                                  msg: 'Signed Out',
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  textColor: Colors.black,
+                                  fontSize: 20,
+                                  timeInSecForIosWeb: 2,
+                                );
+
+                            },
+                              color: Colors.blue,
+                              child: Text("Sign Out",style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                color: Colors.white,
+                              ),),
+                            )
+                        ),
+                      ],
                     ),
                   ],
                 ),
