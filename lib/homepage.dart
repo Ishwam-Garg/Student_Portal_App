@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                   color: Colors.transparent,
                   padding: EdgeInsets.only(bottom: 20,left: 5,right: 5),
                   child: Material(
-                    color: Colors.white70,
+                    color: Colors.lightBlueAccent,
                     elevation: 20,
                     shadowColor: Colors.black,
                     borderRadius: BorderRadius.circular(10),

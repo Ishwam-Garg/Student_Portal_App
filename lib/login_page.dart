@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    //Not Working Correctly: Code to check if user is already signed in
+    //Not Place Correctly or Not Working Correctly: Code to check if user is already signed in
     /*
     if (FirebaseAuth.instance.currentUser==null)
       {
@@ -139,11 +139,12 @@ class _LoginState extends State<Login> {
                                 //toast
                                 Fluttertoast.showToast(
                                   msg: 'Welcome: $_User_email',
-                                  toastLength: Toast.LENGTH_LONG,
+                                  toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.BOTTOM,
                                   textColor: Colors.black,
                                   fontSize: 20,
                                   timeInSecForIosWeb: 2,
+                                  backgroundColor: Colors.white38,
                                 );
                                 print('Signed In');//for developer
                                 Navigator.push(context,
@@ -155,6 +156,15 @@ class _LoginState extends State<Login> {
                               {
                                 print('Error $error');
                                 _formKey1.currentState.reset();
+                                Fluttertoast.showToast(
+                                  msg: 'Error: $error',
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  textColor: Colors.black,
+                                  fontSize: 20,
+                                  timeInSecForIosWeb: 2,
+                                  backgroundColor: Colors.white38,
+                                );
                               }
 
                             }
