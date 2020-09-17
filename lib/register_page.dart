@@ -5,6 +5,10 @@ import 'package:student_portal/homepage.dart';
 import 'login_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+FirebaseApp defaultApp = Firebase.app();
+
 
 class register extends StatefulWidget {
   @override
@@ -55,9 +59,14 @@ class _registerState extends State<register> {
                           {
                             return "Enter a valid email";
                           }
-                        email = value;
                         return null;
-                      },decoration: InputDecoration(
+                      },
+                      onChanged: (val){
+                        setState(() {
+                          email = val;
+                        });
+                      },
+                      decoration: InputDecoration(
                       labelText: 'EMAIL',
                       labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
                       hintText: 'abc@xyz.com',
@@ -109,6 +118,11 @@ class _registerState extends State<register> {
                         }
                         return null;
                       },
+                      onChanged: (val){
+                        setState(() {
+                          password = val;
+                        });
+                      },
                       decoration: InputDecoration(
                         labelText: 'CONFIRM PASSWORD',
                         labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
@@ -132,6 +146,11 @@ class _registerState extends State<register> {
                         username = "@"+value;
                         return null;
                       },
+                      onChanged: (val){
+                        setState(() {
+                          username = val;
+                        });
+                      },
                       decoration: InputDecoration(
                         labelText: 'Username',
                         labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
@@ -143,7 +162,7 @@ class _registerState extends State<register> {
                           ),
                         ),
                       ),
-                      obscureText: true,
+                      obscureText: false,
                     ),
                     SizedBox(height: 10,),
                   ],
@@ -161,12 +180,21 @@ class _registerState extends State<register> {
                 shadowColor: Colors.blueAccent,
                 elevation: 7.0,
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () async {
                     if(_formKey.currentState.validate())
                       {
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DrawerSide()),
-                        );
+                        //User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
+                          //place Navigate Here
+                          _formKey.currentState.reset();
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => DrawerSide()),
+                          );
+                          /*
+                        }).catchError((onError)
+                        {
+                            print("Error found"+onError);
+                        });
+                        */
                       }
                   },//place login here
                   child: Center(

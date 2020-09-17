@@ -12,6 +12,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  final _formKey1 = GlobalKey<FormState>();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,31 +44,52 @@ class _LoginState extends State<Login> {
               padding: EdgeInsets.only(top: 10,left: 30,right: 30),
               child: Column(
                 children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'EMAIL',
-                      labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
-                      hintText: 'abc@xyz.com',
-                      hintStyle: GoogleFonts.montserrat(),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.green,
+                  Form(
+                    key: _formKey1,
+                    child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        validator: (value){
+                          if (EmailValidator.validate(value)!=true)
+                          {
+                            return "Enter a valid email";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          labelText: 'EMAIL',
+                          labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
+                          hintText: 'abc@xyz.com',
+                          hintStyle: GoogleFonts.montserrat(),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      SizedBox(height: 10,),
+                      TextFormField(
+                        validator: (value){
+                          if (value.isEmpty)
+                          {
+                            return 'Please Enter a password';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          labelText: 'PASSWORD',
+                          labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green,
+                            ),
+                          ),
+                        ),
+                        obscureText: true,
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 10,),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'PASSWORD',
-                      labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
-                    obscureText: true,
                   ),
                   SizedBox(height: 10,),
                   Container(
@@ -84,10 +109,14 @@ class _LoginState extends State<Login> {
                       shadowColor: Colors.blueAccent,
                       elevation: 7.0,
                       child: GestureDetector(
-                        onTap: (){
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => DrawerSide()),
-                          );
+                        onTap: () async {
+                          if (_formKey1.currentState.validate())
+                            {
+                              _formKey1.currentState.reset();
+                              Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => DrawerSide()),
+                              );
+                            }
                         },//place login here
                         child: Center(
                           child: Text('Login',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),),
