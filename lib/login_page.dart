@@ -7,6 +7,7 @@ import 'homepage.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'Services/reset_password.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -100,7 +101,11 @@ class _LoginState extends State<Login> {
                     alignment: Alignment.centerRight,
                     padding: EdgeInsets.only(left: 30,top: 15),
                     child: InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => reset()),
+                        );
+                      },
                       child: Text('Forgot Password?',style: GoogleFonts.montserrat(
                           color: Colors.blue,fontWeight: FontWeight.bold,decoration: TextDecoration.underline),),
                     ),),
@@ -171,7 +176,15 @@ class _LoginState extends State<Login> {
                       ),
                       child: GestureDetector(
                         onTap: (){
-
+                          Fluttertoast.showToast(
+                            msg: 'Not Working Currently!!. Please login with email and Password',
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            textColor: Colors.white,
+                            fontSize: 20,
+                            timeInSecForIosWeb: 2,
+                            backgroundColor: Colors.red,
+                          );
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
