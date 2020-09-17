@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import 'register_page.dart';
 import 'homepage.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -16,11 +18,28 @@ class _LoginState extends State<Login> {
   final _formKey1 = GlobalKey<FormState>();
   String _User_email,_User_Password;
 
-
   @override
   Widget build(BuildContext context) {
+    //Not Working Correctly: Code to check if user is already signed in
+    /*
+    if (FirebaseAuth.instance.currentUser==null)
+      {
+        Navigator.push(context,
+          MaterialPageRoute(builder: (context) => DrawerSide()),
+        );
+        String eml = FirebaseAuth.instance.currentUser.email;
+        Fluttertoast.showToast(
+                    msg: 'Welcome: $eml',
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    textColor: Colors.black,
+                    fontSize: 20,
+                    timeInSecForIosWeb: 2,
+                    );
+      }
+    */
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +136,16 @@ class _LoginState extends State<Login> {
                             {
                               try{
                                 UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _User_email, password: _User_Password);
-                                print('Signed In');
+                                //toast
+                                Fluttertoast.showToast(
+                                  msg: 'Welcome: $_User_email',
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  textColor: Colors.black,
+                                  fontSize: 20,
+                                  timeInSecForIosWeb: 2,
+                                );
+                                print('Signed In');//for developer
                                 Navigator.push(context,
                                   MaterialPageRoute(builder: (context) => DrawerSide()),
                                 );
@@ -130,7 +158,7 @@ class _LoginState extends State<Login> {
                               }
 
                             }
-                        },//place login here
+                        },
                         child: Center(
                           child: Text('Login',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),),
                       ),),

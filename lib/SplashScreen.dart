@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 class Splash_Screen extends StatefulWidget {
   @override
   _Splash_ScreenState createState() => _Splash_ScreenState();

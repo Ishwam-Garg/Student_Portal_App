@@ -5,6 +5,7 @@ class AuthService
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //Sign in Anonymously
+  /*   Not in use
   Future SignInAnon()
   async{
       try
@@ -18,7 +19,7 @@ class AuthService
 
       }
   }
-
+  */
   //sign in with email and password
 
   //register with email and password
