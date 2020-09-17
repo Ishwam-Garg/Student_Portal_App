@@ -14,6 +14,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
   final _formKey1 = GlobalKey<FormState>();
+  String _User_email,_User_Password;
 
 
   @override
@@ -54,6 +55,7 @@ class _LoginState extends State<Login> {
                           {
                             return "Enter a valid email";
                           }
+                          _User_email = value;
                           return null;
                         },
                         decoration: InputDecoration(
@@ -75,6 +77,7 @@ class _LoginState extends State<Login> {
                           {
                             return 'Please Enter a password';
                           }
+                          _User_Password = value;
                           return null;
                         },
                         decoration: InputDecoration(
@@ -112,10 +115,20 @@ class _LoginState extends State<Login> {
                         onTap: () async {
                           if (_formKey1.currentState.validate())
                             {
-                              _formKey1.currentState.reset();
-                              Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => DrawerSide()),
-                              );
+                              try{
+                                UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _User_email, password: _User_Password);
+                                print('Signed In');
+                                Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => DrawerSide()),
+                                );
+                                _formKey1.currentState.reset();
+                              }
+                              catch(error)
+                              {
+                                print('Error $error');
+                                _formKey1.currentState.reset();
+                              }
+
                             }
                         },//place login here
                         child: Center(
