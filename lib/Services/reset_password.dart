@@ -73,7 +73,7 @@ class _resetState extends State<reset> {
                   Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(left: 20,right: 20,top: 0),
-                    height: 40,
+                    height: 60,
                     child: Material(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(20.0),
@@ -83,11 +83,40 @@ class _resetState extends State<reset> {
                         onTap: () async {
                           if(_formKey2.currentState.validate())
                           {
-                              //User _user = await FirebaseAuth.instance.sendPasswordResetEmail(email: reset_email);
+                              FirebaseAuth.instance.sendPasswordResetEmail(email: reset_email);
+                              Fluttertoast.showToast(
+                                msg: 'Mail sent',
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                textColor: Colors.black,
+                                fontSize: 20,
+                                timeInSecForIosWeb: 2,
+                              );
+                              _formKey2.currentState.reset();
                           }
                         },//place login here
                         child: Center(
                           child: Text('Reset Password',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),),
+                      ),),
+                  ),
+                  SizedBox(height: 30,),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(left: 20,right: 20,top: 0),
+                    height: 60,
+                    child: Material(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(20.0),
+                      shadowColor: Colors.blueAccent,
+                      elevation: 7.0,
+                      child: GestureDetector(
+                        onTap: () async {
+                          Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Login()),
+                          );
+                        },
+                        child: Center(
+                          child: Text('Login',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),),
                       ),),
                   ),
                   SizedBox(height: 30,),
