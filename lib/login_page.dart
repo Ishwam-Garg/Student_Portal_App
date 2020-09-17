@@ -126,12 +126,12 @@ class _LoginState extends State<Login> {
                                 //toast
                                 Fluttertoast.showToast(
                                   msg: 'Welcome: $_User_email',
-                                  toastLength: Toast.LENGTH_SHORT,
+                                  toastLength: Toast.LENGTH_LONG,
                                   gravity: ToastGravity.BOTTOM,
                                   textColor: Colors.black,
                                   fontSize: 20,
                                   timeInSecForIosWeb: 2,
-                                  backgroundColor: Colors.white38,
+                                  backgroundColor: Colors.white,
                                 );
                                 print('Signed In');//for developer
                                 Navigator.push(context,

@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:student_portal/homepage.dart';
 import 'portfolio.dart';
 import 'login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'homepage.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -136,7 +138,7 @@ class HomeDrawer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     child: RaisedButton(onPressed: (){
                       Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=>Profile_gen(name,username,image)),
+                        MaterialPageRoute(builder: (context)=>Profile_gen(name,username,image,context)),
                       );
                     },
                       color: Colors.blue,
@@ -157,8 +159,9 @@ class HomeDrawer extends StatelessWidget {
     //Implement search bar here
   }
 
-  Widget Profile_gen(name,username,image){
-    return Scaffold(
+  Widget Profile_gen(name,username,image,context){
+    return new WillPopScope(
+        child: Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -179,13 +182,21 @@ class HomeDrawer extends StatelessWidget {
             SizedBox(height: 10,),
             RichText(
               text: TextSpan(children: [
-              TextSpan(text: name, style: GoogleFonts.pacifico(fontSize: 30,color: Colors.blue)),
-              TextSpan(text: username, style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black54)),
-            ]),),
+                TextSpan(text: name, style: GoogleFonts.pacifico(fontSize: 30,color: Colors.blue)),
+                TextSpan(text: username, style: GoogleFonts.pacifico(fontSize: 20,color: Colors.black54)),
+              ]),),
+            RaisedButton(
+                onPressed: (){Navigator.pop(context);},
+                child: Text('Back',style: GoogleFonts.montserrat(color: Colors.white),),
+                color: Colors.blue,
+            ),
           ],
         ),
       ),
-    );
+    ),
+        onWillPop: () async {
+          return false;
+        });
     //Generates a fake profile on pressing view
   }
 

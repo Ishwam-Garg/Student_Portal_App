@@ -28,7 +28,8 @@ class port_folio extends StatefulWidget {
 class _port_folioState extends State<port_folio> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        child: Scaffold(
       backgroundColor: Colors.white,
       body: new PageView(
         children: <Widget>[
@@ -38,9 +39,10 @@ class _port_folioState extends State<port_folio> {
           ),
           Container(
             child: Social(),
-        )
-      ],),
-    );
+          )
+        ],),
+    ),
+        onWillPop: null);
   }
 }
 
