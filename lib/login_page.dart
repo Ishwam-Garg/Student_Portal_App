@@ -20,24 +20,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    //Not Place Correctly or Not Working Correctly: Code to check if user is already signed in
-    /*
-    if (FirebaseAuth.instance.currentUser==null)
-      {
-        Navigator.push(context,
-          MaterialPageRoute(builder: (context) => DrawerSide()),
-        );
-        String eml = FirebaseAuth.instance.currentUser.email;
-        Fluttertoast.showToast(
-                    msg: 'Welcome: $eml',
-                    toastLength: Toast.LENGTH_LONG,
-                    gravity: ToastGravity.BOTTOM,
-                    textColor: Colors.black,
-                    fontSize: 20,
-                    timeInSecForIosWeb: 2,
-                    );
-      }
-    */
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -233,4 +215,33 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
+  @override void initState() {
+    // TODO: implement initState
+    Future<User> getUser() async{
+      return await FirebaseAuth.instance.currentUser;
+    }
+    super.initState();
+    getUser().then((user)
+    {
+        if(user!=null)
+          {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => DrawerSide()),
+            );
+            String eml = FirebaseAuth.instance.currentUser.email;
+            Fluttertoast.showToast(
+              msg: 'Welcome: $eml',
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              textColor: Colors.black,
+              fontSize: 20,
+              timeInSecForIosWeb: 2,
+            );
+          }
+    });
+
+
+  }
 }
+

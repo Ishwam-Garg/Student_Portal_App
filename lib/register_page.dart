@@ -6,7 +6,7 @@ import 'login_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 
 class register extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _registerState extends State<register> {
 
   String password,username,email;
   final _formKey = GlobalKey<FormState>();
-
+  //FirebaseDatabase database = new FirebaseDatabase().reference().child("Users");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,6 +184,10 @@ class _registerState extends State<register> {
                         User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
                           //place Navigate Here
                           _formKey.currentState.reset();
+                          /*
+                           Database
+                          FirebaseDatabase();
+                          */
                           Fluttertoast.showToast(
                               msg: 'Successfully Signed Up and Now Logging',
                               toastLength: Toast.LENGTH_SHORT,
