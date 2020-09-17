@@ -5,7 +5,7 @@ import 'package:student_portal/homepage.dart';
 import 'login_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class register extends StatefulWidget {
@@ -184,13 +184,31 @@ class _registerState extends State<register> {
                         User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
                           //place Navigate Here
                           _formKey.currentState.reset();
+                          Fluttertoast.showToast(
+                              msg: 'Successfully Signed Up and Now Logging',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              textColor: Colors.black,
+                            fontSize: 20,
+                            timeInSecForIosWeb: 2,
+                          );
                           Navigator.push(context,
                             MaterialPageRoute(builder: (context) => DrawerSide()),
                           );
                           _formKey.currentState.reset();
                         }).catchError((onError)
                         {
-                            print("Error found"+onError);
+                          //for user to know
+                          Fluttertoast.showToast(
+                            msg: "Error found $onError",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            textColor: Colors.black,
+                            fontSize: 20,
+                            timeInSecForIosWeb: 2,
+                          );
+                            _formKey.currentState.reset();
+                            print("Error found:$onError"); //for developer to know
                         });
 
                       }
