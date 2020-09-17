@@ -5,9 +5,7 @@ import 'package:student_portal/homepage.dart';
 import 'login_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
-FirebaseApp defaultApp = Firebase.app();
 
 
 class register extends StatefulWidget {
@@ -183,18 +181,18 @@ class _registerState extends State<register> {
                   onTap: () async {
                     if(_formKey.currentState.validate())
                       {
-                        //User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
+                        User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
                           //place Navigate Here
                           _formKey.currentState.reset();
                           Navigator.push(context,
                             MaterialPageRoute(builder: (context) => DrawerSide()),
                           );
-                          /*
+                          _formKey.currentState.reset();
                         }).catchError((onError)
                         {
                             print("Error found"+onError);
                         });
-                        */
+
                       }
                   },//place login here
                   child: Center(

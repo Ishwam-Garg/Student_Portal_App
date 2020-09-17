@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'SplashScreen.dart';
-
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(Splash_Screen());
 }
 /*
