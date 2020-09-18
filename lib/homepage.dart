@@ -11,6 +11,7 @@ import 'social.dart';
 import 'Skills.dart';
 import 'portfolio.dart';
 import 'login_page.dart';
+import 'Search.dart';
 
 class DrawerSide extends StatelessWidget {
   @override
@@ -202,7 +203,11 @@ class _HomeState extends State<Home> {
             shadowColor: Colors.blueAccent,
             elevation: 10.0,
             child: GestureDetector(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AttendancePage()),
+                );
+              },
               child: Container(
                 height: 180,
                 width: 150,
