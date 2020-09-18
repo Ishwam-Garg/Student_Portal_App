@@ -11,7 +11,7 @@ import 'social.dart';
 import 'Skills.dart';
 import 'portfolio.dart';
 import 'login_page.dart';
-import 'Search.dart';
+import 'AttendanceScreen.dart';
 
 class DrawerSide extends StatelessWidget {
   @override
