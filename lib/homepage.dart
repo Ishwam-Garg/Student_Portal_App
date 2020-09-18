@@ -104,6 +104,7 @@ class _HomeState extends State<Home> {
               child: Text("Yes",style: GoogleFonts.montserrat(fontSize: 20)),
             ),
             SizedBox(height: 16),
+            /*
             new GestureDetector(
               onTap: ()
               {
@@ -121,6 +122,7 @@ class _HomeState extends State<Home> {
               },
               child: Text("Sign Out and Exit",style: GoogleFonts.montserrat(fontSize: 20)),
             ),
+            */
           ],
         )
     )??

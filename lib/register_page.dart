@@ -17,9 +17,18 @@ class _registerState extends State<register> {
 
   String password,username,email;
   final _formKey = GlobalKey<FormState>();
-  //FirebaseDatabase database = new FirebaseDatabase().reference().child("Users");
+
+  //databse reference
+  final fb = FirebaseDatabase.instance;
+
+
+
   @override
   Widget build(BuildContext context) {
+    //database ref to be used
+    final ref = fb.reference().child("Users"); //
+
+
     return WillPopScope(child: Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -184,10 +193,12 @@ class _registerState extends State<register> {
                       User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
                         //place Navigate Here
                         _formKey.currentState.reset();
-                        /*
-                           Database
-                          FirebaseDatabase();
-                          */
+
+                        //Database code here
+                        ref.child("Email").set(email);
+                        //ref.child("Username")
+
+
                         Fluttertoast.showToast(
                           msg: 'Successfully Signed Up and Now Logging',
                           toastLength: Toast.LENGTH_SHORT,
@@ -195,6 +206,7 @@ class _registerState extends State<register> {
                           textColor: Colors.black,
                           fontSize: 20,
                           timeInSecForIosWeb: 2,
+                          backgroundColor: Colors.white,
                         );
                         Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Home()),

@@ -79,7 +79,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                               );
                               Fluttertoast.showToast(
                                 msg: 'Signed Out',
-                                toastLength: Toast.LENGTH_LONG,
+                                toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.BOTTOM,
                                 textColor: Colors.black,
                                 fontSize: 20,
