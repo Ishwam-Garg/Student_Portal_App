@@ -70,6 +70,7 @@ class HomeDrawer extends StatelessWidget {
                                   textColor: Colors.black,
                                   fontSize: 20,
                                   timeInSecForIosWeb: 2,
+                                  backgroundColor: Colors.white,
                                 );
 
                             },

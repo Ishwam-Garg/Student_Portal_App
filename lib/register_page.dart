@@ -20,7 +20,7 @@ class _registerState extends State<register> {
   //FirebaseDatabase database = new FirebaseDatabase().reference().child("Users");
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(child: Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Column(
@@ -54,9 +54,9 @@ class _registerState extends State<register> {
                     TextFormField(
                       validator: (value){
                         if (EmailValidator.validate(value)!=true)
-                          {
-                            return "Enter a valid email";
-                          }
+                        {
+                          return "Enter a valid email";
+                        }
                         return null;
                       },
                       onChanged: (val){
@@ -65,16 +65,16 @@ class _registerState extends State<register> {
                         });
                       },
                       decoration: InputDecoration(
-                      labelText: 'EMAIL',
-                      labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
-                      hintText: 'abc@xyz.com',
-                      hintStyle: GoogleFonts.montserrat(),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.green,
+                        labelText: 'EMAIL',
+                        labelStyle: GoogleFonts.montserrat(color: Colors.blue,fontWeight: FontWeight.bold),
+                        hintText: 'abc@xyz.com',
+                        hintStyle: GoogleFonts.montserrat(),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.green,
+                          ),
                         ),
                       ),
-                    ),
                     ),
                     SizedBox(height: 10,),
                     TextFormField(
@@ -180,42 +180,42 @@ class _registerState extends State<register> {
                 child: GestureDetector(
                   onTap: () async {
                     if(_formKey.currentState.validate())
-                      {
-                        User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
-                          //place Navigate Here
-                          _formKey.currentState.reset();
-                          /*
+                    {
+                      User user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user){
+                        //place Navigate Here
+                        _formKey.currentState.reset();
+                        /*
                            Database
                           FirebaseDatabase();
                           */
-                          Fluttertoast.showToast(
-                              msg: 'Successfully Signed Up and Now Logging',
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              textColor: Colors.black,
-                            fontSize: 20,
-                            timeInSecForIosWeb: 2,
-                          );
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => DrawerSide()),
-                          );
-                          _formKey.currentState.reset();
-                        }).catchError((onError)
-                        {
-                          //for user to know
-                          Fluttertoast.showToast(
-                            msg: "Error found $onError",
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.BOTTOM,
-                            textColor: Colors.black,
-                            fontSize: 20,
-                            timeInSecForIosWeb: 2,
-                          );
-                            _formKey.currentState.reset();
-                            print("Error found:$onError"); //for developer to know
-                        });
+                        Fluttertoast.showToast(
+                          msg: 'Successfully Signed Up and Now Logging',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          textColor: Colors.black,
+                          fontSize: 20,
+                          timeInSecForIosWeb: 2,
+                        );
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => DrawerSide()),
+                        );
+                        _formKey.currentState.reset();
+                      }).catchError((onError)
+                      {
+                        //for user to know
+                        Fluttertoast.showToast(
+                          msg: "Error found $onError",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          textColor: Colors.black,
+                          fontSize: 20,
+                          timeInSecForIosWeb: 2,
+                        );
+                        _formKey.currentState.reset();
+                        print("Error found:$onError"); //for developer to know
+                      });
 
-                      }
+                    }
                   },//place login here
                   child: Center(
                     child: Text('Sign Up',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),),
@@ -245,6 +245,17 @@ class _registerState extends State<register> {
           ],
         ),
       ),
+    ), onWillPop: _OnBackPressed);
+  }
+
+  Future<bool> _OnBackPressed()
+  {
+    Navigator.push(context,
+      MaterialPageRoute(builder: (context) => Login()),
     );
   }
+
+
+
+
 }
