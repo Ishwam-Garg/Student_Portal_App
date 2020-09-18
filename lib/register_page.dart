@@ -197,7 +197,7 @@ class _registerState extends State<register> {
                           timeInSecForIosWeb: 2,
                         );
                         Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => DrawerSide()),
+                          MaterialPageRoute(builder: (context) => Home()),
                         );
                         _formKey.currentState.reset();
                       }).catchError((onError)

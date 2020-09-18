@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'social.dart';
 import 'Skills.dart';
+import 'homepage.dart';
 
 class Port extends StatefulWidget {
   @override
@@ -42,9 +43,22 @@ class _port_folioState extends State<port_folio> {
           )
         ],),
     ),
-        onWillPop: null);
+        onWillPop: _OnBackPressed);
   }
+
+
+  Future<bool> _OnBackPressed()
+  {
+    print("called");//for me to know call
+    Navigator.push(context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
+  }
+
 }
+
+
+
 
 Widget info(){
   return Container(

@@ -32,15 +32,16 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(child: Scaffold(
+    return WillPopScope(
+        child: Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: HomeDrawer(),
-      body: PageView(
-        children: <Widget>[
-          Container(color: Colors.blue,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
+            drawer: HomeDrawer(),
+            body: PageView(
+                children: <Widget>[
+                Container(color: Colors.blue,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Text("Home",style: GoogleFonts.pacifico(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),),
@@ -81,7 +82,49 @@ class _HomeState extends State<Home> {
         ],
         pageSnapping: true,
       ),
-    ), onWillPop: onBack);
+    ),
+        onWillPop: _onBack);
+  }
+  Future<bool> _onBack()
+  {
+    print("called");
+    return showDialog(
+        context: context,
+        builder: (context) => new AlertDialog(
+          title: Text("Are you Sure"),
+          content: Text("Would you like to exit the app??"),
+          actions: <Widget>[
+            new GestureDetector(
+              onTap: ()=>Navigator.of(context).pop(false)
+              ,child: Text("No",style: GoogleFonts.montserrat(fontSize: 20),),
+            ),
+            SizedBox(height: 16),
+            new GestureDetector(
+              onTap: ()=> SystemNavigator.pop(),
+              child: Text("Yes",style: GoogleFonts.montserrat(fontSize: 20)),
+            ),
+            SizedBox(height: 16),
+            new GestureDetector(
+              onTap: ()
+              {
+                FirebaseAuth.instance.signOut();
+                Fluttertoast.showToast(
+                  msg: 'Signed Out',
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  textColor: Colors.black,
+                  fontSize: 20,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Colors.white,
+                );
+                SystemNavigator.pop();
+              },
+              child: Text("Sign Out and Exit",style: GoogleFonts.montserrat(fontSize: 20)),
+            ),
+          ],
+        )
+    )??
+        false;
   }
   Widget info(){
     return Container(
@@ -189,7 +232,7 @@ class _HomeState extends State<Home> {
             child: GestureDetector(
               onTap: (){
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Port()),
+                  MaterialPageRoute(builder: (context) => port_folio()),
                 );
               },
               child: Container(
@@ -238,47 +281,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Future<bool> onBack()
-  {
-    print("called");
-    return showDialog(
-        context: context,
-        builder: (context) => new AlertDialog(
-          title: Text("Are you Sure"),
-          content: Text("Would you like to exit the app??"),
-          actions: <Widget>[
-            new GestureDetector(
-              onTap: ()=>Navigator.of(context).pop(false),
-              child: Text("No",style: GoogleFonts.montserrat(fontSize: 20),),
-            ),
-            SizedBox(height: 16,width: 10,),
-            new GestureDetector(
-              onTap: ()=> SystemNavigator.pop(),
-              child: Text("Yes",style: GoogleFonts.montserrat(fontSize: 20)),
-            ),
-            SizedBox(height: 16,width: 10,),
-            new GestureDetector(
-              onTap: ()
-              {
-                FirebaseAuth.instance.signOut();
-                Fluttertoast.showToast(
-                  msg: 'Signed Out',
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  textColor: Colors.black,
-                  fontSize: 20,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.white,
-                );
-                SystemNavigator.pop();
-              },
-              child: Text("Sign Out and Exit",style: GoogleFonts.montserrat(fontSize: 20)),
-            ),
-          ],
-    )
-    )??
-    false;
-  }
 
 }
 

@@ -138,7 +138,7 @@ class _LoginState extends State<Login> {
                                   );
                                   print('Signed In');//for developer
                                   Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => DrawerSide()),
+                                    MaterialPageRoute(builder: (context) => Home()),
                                   );
                                   _formKey1.currentState.reset();
                                 }
@@ -244,7 +244,7 @@ class _LoginState extends State<Login> {
         if(user!=null)
           {
             Navigator.push(context,
-              MaterialPageRoute(builder: (context) => DrawerSide()),
+              MaterialPageRoute(builder: (context) => Home()),
             );
             String eml = FirebaseAuth.instance.currentUser.email;
             Fluttertoast.showToast(
