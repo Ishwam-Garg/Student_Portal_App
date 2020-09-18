@@ -43,19 +43,19 @@ class _HomeState extends State<Home> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Text("Home",style: GoogleFonts.pacifico(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),),
-                ),
-                Container(
-                  color: Colors.transparent,
-                  padding: EdgeInsets.only(bottom: 20,left: 5,right: 5),
-                  child: Material(
-                    color: Colors.blue,
-                    elevation: 0,
+                            Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: Text("Home",style: GoogleFonts.pacifico(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),),
+                                ),
+                            Container(
+                              color: Colors.transparent,
+                              padding: EdgeInsets.only(bottom: 20,left: 5,right: 5),
+                              child: Material(
+                              color: Colors.blue,
+                                elevation: 0,
                     //shadowColor: Colors.black,
-                    borderRadius: BorderRadius.circular(10),
-                    child: Column(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Column(
                       children: <Widget>[
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
